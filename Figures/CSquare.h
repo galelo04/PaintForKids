@@ -7,6 +7,7 @@ class CSquare : public CFigure
 {
 private:
 	Point Center;
+	int squareLength;
 public:
 	CSquare();
 	CSquare(Point, GfxInfo FigureGfxInfo);
@@ -20,6 +21,7 @@ public:
 	virtual color getfillcolor();
 	virtual void PrintInfo(Output* pOut);
 	virtual void move(Point P);
+	virtual void resize(Point P);
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
 	void MakeSound();

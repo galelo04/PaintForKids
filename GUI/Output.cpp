@@ -242,10 +242,10 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 }
 
-void Output::DrawSquare(Point P1, GfxInfo SqrGfxInfo, bool selected) const
+void Output::DrawSquare(Point P1, GfxInfo SqrGfxInfo , int lengthsize, bool selected) const
 {
-	int arrx[4] = { P1.x - squareLength / 2, P1.x - squareLength / 2, P1.x + squareLength / 2, P1.x + squareLength / 2 };
-	int arry[4] = { P1.y - squareLength / 2, P1.y + squareLength / 2, P1.y + squareLength / 2, P1.y - squareLength / 2 };
+	int arrx[4] = { P1.x - lengthsize / 2, P1.x - lengthsize / 2, P1.x + lengthsize / 2, P1.x + lengthsize / 2 };
+	int arry[4] = { P1.y - lengthsize / 2, P1.y + lengthsize / 2, P1.y + lengthsize / 2, P1.y - lengthsize / 2 };
 
 	color DrawingClr;
 	if (selected)
@@ -291,15 +291,15 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool
 }
 
 
-void Output::DrawHex(Point P1, GfxInfo HexGfxInfo, bool selected) const
+void Output::DrawHex(Point P1, GfxInfo HexGfxInfo, int sizelength, bool selected) const
 {
 	
 	int arrx[6];
 	int arry[6];
 	for (int i = 0; i < 6; i++)
 	{
-		arrx[i] = P1.x + floor(hexagonLength * cos(PI * i / 3.0));
-		arry[i] = P1.y + floor(hexagonLength * sin(PI * i / 3.0));
+		arrx[i] = P1.x + floor(sizelength * cos(PI * i / 3.0));
+		arry[i] = P1.y + floor(sizelength * sin(PI * i / 3.0));
 	}
 
 	color DrawingClr;

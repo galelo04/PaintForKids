@@ -23,7 +23,12 @@ public:
 	 FigType gettype();
 	 color getfillcolor();
 	int getradius();
+<<<<<<< HEAD
+	virtual void move(Point P);
+	virtual void resize(Point P);
+=======
 	 void move(Point P);
+>>>>>>> 98527c84ad3931c4ba7bf0f41c4e21addd984e89
 	void DeleteFigure(CFigure*);
 	 Point GetPointtoUndo();
 	void MakeSound();
