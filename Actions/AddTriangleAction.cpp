@@ -37,15 +37,14 @@ void AddTriangleAction::ReadActionParameters()
 	TriangleGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddTriangleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-
+	pManager->setFlagForRec(off);
 	//Create a rectangle with the parameters read from the user
 	CTriangle* T = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 

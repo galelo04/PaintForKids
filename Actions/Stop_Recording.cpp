@@ -17,6 +17,7 @@ void Stop_Recording::ReadActionParameters() {
 		pOut->PrintMessage("S T O P__R E C O R D I N G");
 		pManager->set_recorder_for_play(pManager->get_recorder());
 		pManager->set_recorder(NULL);
+		pManager->setForDeleteFigList(pManager->getFigcount());
 	}
 	
 }

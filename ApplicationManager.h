@@ -26,9 +26,10 @@ private:
 	int ActionCount;
 	Action* ActionList[MaxActionCount];
 
-	int FlagForSou;
-	int FlagForRec;
+	RecordControl FlagForSou;
+	RecordControl FlagForRec;
 	int RecordCount;
+	int forDeleteFigList;
 	Action* RecordingList[MaxRecordCount];
 
 	Start_Recording* pRecord;
@@ -67,7 +68,7 @@ public:
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
-	void UpdateInterface() ;	//Redraws all the drawing window
+	void UpdateInterface()const ;	//Redraws all the drawing window
 
 	int CountRectangles();
 	int CountSquares();
@@ -96,10 +97,12 @@ public:
 	Action* getActionRecordList(int);
 	void deleteFigureForRecord(int);
 	void UpdateInterfaceForRecord() const;
-	void setFlagForRec(int);
-	int getFlagForRec();
-	void setFlagForSou(int);
-	int getFlagForSou();
+	void setFlagForRec(RecordControl);
+	RecordControl getFlagForRec();
+	void setFlagForSou(RecordControl);
+	RecordControl getFlagForSou();
+	void setForDeleteFigList(int);
+	int getForDeleteFigLis();
 };
 
 #endif

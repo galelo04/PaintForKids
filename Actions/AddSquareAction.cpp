@@ -27,15 +27,14 @@ void AddSquareAction::ReadActionParameters()
 	SquareGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddSquareAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-
+	pManager->setFlagForRec(off);
 	//Create a square with the parameters read from the user
 	CSquare* S = new CSquare(P, SquareGfxInfo);
 

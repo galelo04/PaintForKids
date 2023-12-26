@@ -13,10 +13,6 @@ void MoveFig::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	pOut->PrintMessage("Move Figure : Click on the point");
-	pIn->GetPointClicked(P.x, P.y);
-	Moved_Fig = pManager->getSelectedFigure();
-	prevpoint = pManager->getSelectedFigure()->GetPointtoUndo();
-
 }
 
 void MoveFig::Execute()
@@ -24,7 +20,15 @@ void MoveFig::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	ReadActionParameters();
-	pManager->getSelectedFigure()->move(P);
+	if (pManager->getSelectedFigure() != NULL)
+	{
+		pIn->GetPointClicked(P.x, P.y);
+		pManager->getSelectedFigure()->move(P);
+		Moved_Fig = pManager->getSelectedFigure();
+		prevpoint = pManager->getSelectedFigure()->GetPointtoUndo();
+	}
+	else
+		pOut->PrintMessage("Please, Select a Figure to Move");
 	pOut->ClearDrawArea();
 	pManager->UpdateInterface();
 	pManager->deselectall();
