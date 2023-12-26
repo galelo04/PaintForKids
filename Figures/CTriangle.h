@@ -27,6 +27,7 @@ public:
 	Point getvertix3();
 	Point getcentroid();
 	virtual void move(Point P);
+	virtual void resize(Point P);
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
 	//void MakeSound();

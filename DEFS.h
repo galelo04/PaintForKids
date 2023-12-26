@@ -5,8 +5,6 @@
 #include <cmath>
 
 const double PI = atan(1) * 4; //defining pi
-const int squareLength = 200;
-const int hexagonLength = 100;
 
 
 

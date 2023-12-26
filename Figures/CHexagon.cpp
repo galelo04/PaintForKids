@@ -9,6 +9,8 @@ CHexagon::CHexagon()
 
 CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo),Center(C)
 {
+	hexagonLength = 100;
+
 	if (Center.y - cos(PI / 6.0) * hexagonLength < UI.ToolBarHeight)
 	{
 		Center.y = cos(PI / 6.0) * hexagonLength + UI.ToolBarHeight;
@@ -42,7 +44,7 @@ CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo),Center
 void CHexagon::Draw(Output* pOut) const
 {
 	//Call Output::DrawHex to draw a hexagon on the screen	
-	pOut->DrawHex(Center, FigGfxInfo, Selected);
+	pOut->DrawHex(Center, FigGfxInfo , hexagonLength, Selected);
 }
 
 bool CHexagon::isPointInside(int x, int y) const
@@ -111,6 +113,17 @@ void CHexagon::move(Point P1)
 {
 	Center.x = P1.x;
 	Center.y = P1.y;
+}
+void CHexagon::resize(Point P)
+{
+	for (int i = 0; i < 6; i++)
+	{
+		if (P.x >= (Center.x + floor(hexagonLength * cos(PI * i / 3.0))) - 50 && P.x <= (Center.x + floor(hexagonLength * cos(PI * i / 3.0))) + 50 && P.y >= (Center.y + floor(hexagonLength * sin(PI * i / 3.0))) - 50 && P.y <= (Center.y + floor(hexagonLength * sin(PI * i / 3.0))) + 50)
+		{
+			hexagonLength = abs(P.x - Center.x)+ abs(P.y - Center.y)*atan(PI/6);
+			break;
+		}
+	}
 }
 void CHexagon::DeleteFigure(CFigure*p) {
 	delete p;

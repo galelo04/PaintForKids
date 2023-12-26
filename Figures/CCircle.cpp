@@ -96,6 +96,12 @@ void CCircle::move(Point P1)
 	Center.x = P1.x;
 	Center.y = P1.y;
 }
+void CCircle::resize(Point P)
+{
+	int distance = sqrt(pow((P.x - Center.x), 2) + pow((P.y - Center.y), 2));
+	if (distance >= radius + 25 || distance <= radius - 25)
+		radius = distance;
+}
 void CCircle::DeleteFigure(CFigure* p) {
 	delete p;
 }

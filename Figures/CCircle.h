@@ -25,6 +25,7 @@ public:
 	virtual color getfillcolor();
 	int getradius();
 	virtual void move(Point P);
+	virtual void resize(Point P);
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
 	//void MakeSound();

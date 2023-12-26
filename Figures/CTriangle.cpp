@@ -124,6 +124,25 @@ void CTriangle::move(Point P)
 	Vertix2.y += yref;
 	Vertix3.y += yref;
 }
+void CTriangle::resize(Point P)
+{
+	if (P.x >= Vertix1.x - 25 && P.x <= Vertix1.x + 25 && P.y >= Vertix1.y - 25 && P.y <= Vertix1.y + 25)
+	{
+		Vertix1.x = P.x;
+		Vertix1.y = P.y;
+	}
+	else if (P.x >= Vertix2.x - 25 && P.x <= Vertix2.x + 25 && P.y >= Vertix2.y - 25 && P.y <= Vertix2.y + 25)
+	{
+		Vertix2.x = P.x;
+		Vertix2.y = P.y;
+	}
+	else if (P.x >= Vertix3.x - 25 && P.x <= Vertix3.x + 25 && P.y >= Vertix3.y - 25 && P.y <= Vertix3.y + 25)
+	{
+		Vertix3.x = P.x;
+		Vertix3.y = P.y;
+	}
+
+}
 void CTriangle::DeleteFigure(CFigure * p) {
 	delete p;
 }

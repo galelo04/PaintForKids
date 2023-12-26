@@ -25,6 +25,7 @@ public:
 	int getwidth();
 	int getheight();
 	virtual void move(Point P);
+	virtual void resize(Point P);
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
 	//void MakeSound();

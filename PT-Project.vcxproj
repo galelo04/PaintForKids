@@ -199,6 +199,7 @@
     <ClCompile Include="Actions\Select_Fig_Fill_Color.cpp" />
     <ClCompile Include="Actions\Select_Fig_Type_FillColor.cpp" />
     <ClCompile Include="Actions\MoveByDragAction.cpp" />
+    <ClCompile Include="ReszieByDragAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -257,6 +258,7 @@
     <ClInclude Include="Actions\Select_Fig_Fill_Color.h" />
     <ClInclude Include="Actions\Select_Fig_Type_FillColor.h" />
     <ClInclude Include="Actions\MoveByDragAction.h" />
+    <ClInclude Include="ReszieByDragAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\oomao\Downloads\Phase2 - Code F23\Phase2 - Code F22\ClassDiagram.cd" />

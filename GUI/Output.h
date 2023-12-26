@@ -20,9 +20,9 @@ public:
 
 	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a rectangle
-	void DrawSquare(Point P1, GfxInfo RectGfxInfo, bool selected = false) const;  //Draw a Square
+	void DrawSquare(Point P1, GfxInfo RectGfxInfo, int sizelength,bool selected = false) const;  //Draw a Square
 	void DrawCircle(Point P1, int radius, GfxInfo RectGfxInfo, bool selected) const;
-	void DrawHex(Point P1, GfxInfo RectGfxInfo, bool selected) const;
+	void DrawHex(Point P1, GfxInfo RectGfxInfo, int sizelength , bool selected ) const;
 	void DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const;
 
 	///Make similar functions for drawing all other figure types.

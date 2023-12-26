@@ -28,6 +28,7 @@
 #include"Stop_Recording.h"
 #include"SwitchDraw.h"
 #include "MoveByDragAction.h"
+#include "ReszieByDragAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -146,6 +147,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SELECT_MOVE_BY_DRAG:
 			pAct = new MoveByDragAction(this);
+			break;
+		case SELECT_RESIZE:
+			pAct = new ResizeByDragAction(this);
 			break;
 		case STATUS:	//a click on the status bar ==> no action
 			return;

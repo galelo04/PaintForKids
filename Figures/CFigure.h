@@ -48,6 +48,7 @@ public:
 	GfxInfo getgfxinfo(); 
 	void setisFilled(bool flag);
     virtual void move(Point P) = 0;
+	virtual void resize(Point P) = 0;
 	virtual void DeleteFigure(CFigure*)=0;
 	
 	virtual Point GetPointtoUndo() = 0;		 //Get the central point to return the Figure into its place after Undo

@@ -99,6 +99,37 @@ void CRectangle::move(Point P)
 	Corner1.y = P.y - height/2;
 	Corner2.y = P.y + height/2;
 }
+void CRectangle::resize(Point P)
+{
+	if (P.x >= Corner1.x - 25 && P.x <= Corner1.x + 25 && P.y >= Corner1.y - 25 && P.y <= Corner1.y + 25)
+	{
+		Corner1.x = P.x;
+		Corner1.y = P.y;
+	}
+	else if (P.x >= Corner2.x - 25 && P.x <= Corner2.x + 25 && P.y >= Corner2.y - 25 && P.y <= Corner2.y + 25)
+	{
+		Corner2.x = P.x;
+		Corner2.y = P.y;
+	}
+	else if (P.x >= Corner2.x - 25 && P.x <= Corner2.x + 25 && P.y >= Corner1.y - 25 && P.y <= Corner1.y + 25)
+	{
+		int tempx = Corner1.x;
+		int tempy = Corner2.y;
+		Corner1.x = P.x;
+		Corner1.y = P.y;
+		Corner2.x = tempx;
+		Corner2.y = tempy;
+	}
+	else if (P.x >= Corner2.y - 25 && P.x <= Corner2.y + 25 && P.y >= Corner1.x - 25 && P.y <= Corner1.x + 25)
+	{
+		int tempx = Corner2.x;
+		int tempy = Corner1.y;
+		Corner1.x = P.x;
+		Corner1.y = P.y;
+		Corner2.x = tempx;
+		Corner2.y = tempy;
+	}
+}
 void CRectangle::DeleteFigure(CFigure*p) {
 	delete p;
 }
