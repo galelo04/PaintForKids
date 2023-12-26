@@ -11,7 +11,6 @@ private:
 public:
 	CRectangle();
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
-	//virtual void operator= (CFigure* Other);
 	
 	virtual void Draw(Output* pOut) const;
 	virtual bool isPointInside(int x , int y) const;
@@ -27,6 +26,8 @@ public:
 	virtual void move(Point P);
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
+	void MakeSound();
+	CFigure* getFigCopy();
 	//void MakeSound();
 };
 

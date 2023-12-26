@@ -17,6 +17,16 @@ void DrawClrAction::ReadActionParameters()
 	ActType = pIn->GetUserAction();
 	pOut->ClearStatusBar();
 
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
+
 }
 
 void DrawClrAction::Execute()
@@ -83,6 +93,7 @@ void DrawClrAction::Execute()
 	{
 		pManager->GetOutput()->PrintMessage("There is no selected Figure to change its color");
 	}
+
 }
 
 void DrawClrAction::Undo()

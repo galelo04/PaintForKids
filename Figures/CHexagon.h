@@ -10,19 +10,19 @@ private:
 public:
 	CHexagon();
 	CHexagon(Point, GfxInfo FigureGfxInfo);
-	//virtual void operator= (CFigure* Other);
 
-	virtual void Draw(Output* pOut) const;
-	virtual bool isPointInside(int x, int y) const;
-	virtual void Save(ofstream& OutFile);
-	virtual void Load(ifstream& Infile);
-	virtual FigType gettype();
-	virtual color getfillcolor();
-	virtual void PrintInfo(Output* pOut);
-	virtual void move(Point P);
+	void Draw(Output* pOut) const;
+	bool isPointInside(int x, int y) const;
+	void Save(ofstream& OutFile);
+	void Load(ifstream& Infile);
+	FigType gettype();
+	color getfillcolor();
+	void PrintInfo(Output* pOut);
+	void move(Point P);
 	void DeleteFigure(CFigure*);
-	virtual Point GetPointtoUndo();
-	//void MakeSound();
+	Point GetPointtoUndo();
+	void MakeSound();
+	CFigure* getFigCopy();
 };
 
 #endif

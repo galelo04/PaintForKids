@@ -23,7 +23,6 @@ private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 	CFigure* SelectedFig;//Pointer to the selected figure
-	int ActionCount;
 	Action* ActionList[MaxActionCount];
 
 	int FlagForSou;
@@ -63,6 +62,8 @@ public:
 	CFigure* GetLastFigure() const;
 	Action* GetLastCanUndoActions();
 	Action* GetLastCanRedoActions();
+	Action* getActionList(int);
+	void setActionList(Action*, int);
 
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
@@ -84,6 +85,9 @@ public:
 	void dElEtE(CFigure* Fig);
 	void set_recorder_for_play(Start_Recording* p);
 	Start_Recording* get_recorder_for_play();
+	int FlagForRedoUndo;
+	int counterForUndoRedo;
+	int ActionCount;
 
 	void set_recorder(Start_Recording* p);
 	Start_Recording* get_recorder();

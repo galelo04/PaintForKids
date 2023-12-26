@@ -22,6 +22,16 @@ void Delete::Execute()
 		DeletedFig = pManager->getSelectedFigure();
 		pManager->dElEtE(pManager->getSelectedFigure());
 	}
+
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 }
 
 void Delete::Undo()
@@ -34,7 +44,9 @@ void Delete::Redo()
 {
 	if (MadeUndo)
 	{
+		CFigure* p = DeletedFig->getFigCopy();
 		pManager->dElEtE(DeletedFig);
+		DeletedFig = p;
 	}
 	else
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");
@@ -47,4 +59,10 @@ void Delete::ExecuteRecord() {
 	DeletedFig = pManager->getSelectedFigure();
 	if (pManager->getSelectedFigure() != NULL)
 		pManager->dElEtE(pManager->getSelectedFigure());
+}
+
+Delete::~Delete()
+{
+	if (DeletedFig != NULL)
+		delete DeletedFig;
 }

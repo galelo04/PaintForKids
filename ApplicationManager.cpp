@@ -50,6 +50,8 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < MaxRecordCount; i++)
 		RecordingList[i] = NULL;
 
+	FlagForRedoUndo = 0;
+	counterForUndoRedo = 0;
     FlagForSou=0;
 	FlagForRec = 0;
 	SelectedFig = NULL;
@@ -162,7 +164,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		else if ((ActionCount == MaxActionCount) && (pAct->CanUndo()))
 		{
-			delete ActionList[0];
+			if (get_recorder() == NULL)
+				delete ActionList[0];
 			for (int i = 0; i < MaxActionCount - 1; i++)
 				ActionList[i] = ActionList[i + 1];
 			ActionList[MaxActionCount - 1] = pAct;
@@ -207,6 +210,13 @@ Action* ApplicationManager::GetLastCanRedoActions()
 		return NULL;
 	}
 }
+Action* ApplicationManager::getActionList(int i) {
+	return ActionList[i];
+}
+void ApplicationManager::setActionList(Action* p, int i) {
+	ActionList[i] = p;
+}
+
 
 void ApplicationManager::set_recorder_for_play(Start_Recording* p) {
 	pRecord_2 = p;
@@ -502,14 +512,6 @@ void ApplicationManager::deselectall()
 		FigList[i]->SetSelected(false);
 	}
 }
-
-//void ApplicationManager::AddActions(Action* pAct)
-//{
-//	if (ActionCount < MaxActionCount)
-//	{
-//		ActionList[ActionCount++] = pAct;
-//	}
-//}
 
 
 

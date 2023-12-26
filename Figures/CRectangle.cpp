@@ -19,16 +19,6 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 	//The above lines changes the value of the y of the points to not overdraw the toolbar and the statusbar
 }
 
-/*void CRectangle::operator=(CFigure* Other)
-{
-	CRectangle* Rect = (CRectangle*)Other;
-	ID = Rect->get_ID();
-	Selected = Rect->IsSelected();
-	FigGfxInfo = Rect->getgfxinfo();
-	Type = Rect->gettype();
-	Corner1 = Rect->Corner1;
-	Corner2 = Rect->Corner2;
-}*/
 	
 void CRectangle::Draw(Output* pOut) const
 {
@@ -111,6 +101,14 @@ Point CRectangle::GetPointtoUndo()
 	return P;
 }
 
-//void CRectangle::MakeSound() {
-	//PlaySound(TEXT("sounds\\rectangle"), NULL, SND_ASYNC);
-//}
+void CRectangle::MakeSound() {
+	PlaySound(TEXT("sounds\\rectangle"), NULL, SND_ASYNC);
+}
+
+CFigure* CRectangle::getFigCopy()
+{
+	CFigure* p = new CRectangle(Corner1, Corner2, FigGfxInfo);
+	p->set_ID(ID);
+	p->SetSelected(Selected);
+	return p;
+}

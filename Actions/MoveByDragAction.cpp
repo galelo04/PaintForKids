@@ -49,20 +49,3 @@ void MoveByDragAction::Execute()
 		prev_buttonstate = current_buttonstate;
 	}
 }
-
-void MoveByDragAction::Undo()
-{
-}
-
-void MoveByDragAction::Redo()
-{
-}
-
-bool MoveByDragAction::CanRecord()
-{
-	return false;
-}
-
-void MoveByDragAction::ExecuteRecord()
-{
-}

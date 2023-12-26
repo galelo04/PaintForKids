@@ -29,15 +29,6 @@ CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo),Center
 	//and not to get out of the draw window
 }
 
-/*void CHexagon::operator=(CFigure* Other)
-{
-	CHexagon* Hex = (CHexagon*)Other;
-	ID = Hex->get_ID();
-	Selected = Hex->IsSelected();
-	FigGfxInfo = Hex->getgfxinfo();
-	Type = Hex->gettype();
-	Center = Hex->Center;
-}*/
 
 void CHexagon::Draw(Output* pOut) const
 {
@@ -120,6 +111,15 @@ Point CHexagon::GetPointtoUndo()
 {
 	return Center;
 }
-//void CHexagon::MakeSound() {
-	//PlaySound(TEXT("sounds\\hexagon"), NULL, SND_ASYNC);
-//}
+void CHexagon::MakeSound() {
+	PlaySound(TEXT("sounds\\hexagon"), NULL, SND_ASYNC);
+}
+
+
+CFigure* CHexagon::getFigCopy()
+{
+	CFigure* p = new CHexagon(Center, FigGfxInfo);
+	p->set_ID(ID);
+	p->SetSelected(Selected);
+	return p;
+}

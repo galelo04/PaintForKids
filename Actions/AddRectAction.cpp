@@ -52,6 +52,16 @@ void AddRectAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
+
 
 
 }

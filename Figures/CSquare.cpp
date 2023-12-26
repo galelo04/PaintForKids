@@ -29,15 +29,6 @@ CSquare::CSquare(Point C, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo),Center(
 	//and not to get out of the draw window
 }
 
-/*void CSquare::operator=(CFigure* Other)
-{
-	CSquare* Squ = (CSquare*)Other;
-	ID = Squ->get_ID();
-	Selected = Squ->IsSelected();
-	FigGfxInfo = Squ->getgfxinfo();
-	Type = Squ->gettype();
-	Center = Squ->Center;
-}*/
 
 void CSquare::Draw(Output* pOut) const
 {
@@ -91,6 +82,15 @@ Point CSquare::GetPointtoUndo()
 {
 	return Center;
 }
-//void CSquare::MakeSound() {
-	//PlaySound(TEXT("sounds\\square"), NULL, SND_ASYNC);
-//}
+
+void CSquare::MakeSound() {
+	PlaySound(TEXT("sounds\\square"), NULL, SND_ASYNC);
+}
+
+CFigure* CSquare::getFigCopy()
+{
+	CFigure* p = new CSquare(Center, FigGfxInfo);
+	p->set_ID(ID);
+	p->SetSelected(Selected);
+	return p;
+}

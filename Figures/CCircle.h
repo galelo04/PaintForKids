@@ -13,21 +13,21 @@ private:
 public:
 	CCircle();
 	CCircle (Point, Point, GfxInfo FigureGfxInfo);
-	//virtual void operator= (CFigure* Other);
 
-	virtual void Draw(Output* pOut) const;
-	virtual bool isPointInside(int x, int y) const;
-	virtual void Save(ofstream& OutFile) ;	
-	virtual void Load(ifstream& Infile) ;	
+	 void Draw(Output* pOut) const;
+      bool isPointInside(int x, int y) const;
+	 void Save(ofstream& OutFile) ;	
+	 void Load(ifstream& Infile) ;	
 
-	virtual void PrintInfo(Output* pOut) ;
-	virtual FigType gettype();
-	virtual color getfillcolor();
+	 void PrintInfo(Output* pOut) ;
+	 FigType gettype();
+	 color getfillcolor();
 	int getradius();
-	virtual void move(Point P);
+	 void move(Point P);
 	void DeleteFigure(CFigure*);
-	virtual Point GetPointtoUndo();
-	//void MakeSound();
+	 Point GetPointtoUndo();
+	void MakeSound();
+	CFigure* getFigCopy();
 };
 
 #endif

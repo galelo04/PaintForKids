@@ -22,17 +22,6 @@ CTriangle::CTriangle(Point V1, Point V2, Point V3, GfxInfo FigureGfxInfo):CFigur
 	//The above lines changes the value of the y of the points to not overdraw the toolbar and the statusbar
 }
 
-/*void CTriangle::operator=(CFigure* Other)
-{
-	CTriangle* Tri = (CTriangle*)Other;
-	ID = Tri->get_ID();
-	Selected = Tri->IsSelected();
-	FigGfxInfo = Tri->getgfxinfo();
-	Type = Tri->gettype();
-	Vertix1 = Tri->Vertix1;
-	Vertix2 = Tri->Vertix2;
-	Vertix3 = Tri->Vertix3;
-}*/
 
 void CTriangle::Draw(Output* pOut) const
 {
@@ -133,7 +122,14 @@ Point CTriangle::GetPointtoUndo()
 	return getcentroid();
 }
 
-//void CTriangle::MakeSound() {
-	//PlaySound(TEXT("sounds\\triangle"), NULL, SND_ASYNC);
-//}
+void CTriangle::MakeSound() {
+	PlaySound(TEXT("sounds\\triangle"), NULL, SND_ASYNC);
+}
 
+CFigure* CTriangle::getFigCopy()
+{
+	CFigure* p = new CTriangle(Vertix1, Vertix2, Vertix3, FigGfxInfo);
+	p->set_ID(ID);
+	p->SetSelected(Selected);
+	return p;
+}

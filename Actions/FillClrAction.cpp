@@ -18,6 +18,16 @@ void FillClrAction::ReadActionParameters()
 	ActType = pIn->GetUserAction();
 	pOut->ClearStatusBar();
 
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
+
 }
 
 void FillClrAction::Execute()
@@ -98,6 +108,7 @@ void FillClrAction::Undo()
 	}
 	else
 	{
+		prev_Fig->ChngFillClr(UI.BkGrndColor);
 		UI.isfilled = false;
 		prev_Fig->setisFilled(false);
 	}
