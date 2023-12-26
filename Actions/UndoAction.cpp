@@ -17,8 +17,12 @@ void UndoAction::Execute()
 {
 	ReadActionParameters();
 	Action* flag = pManager->GetLastCanUndoActions();
-	if(flag != NULL)
+	if (flag != NULL)
+	{
 		flag->Undo();
+		pManager->counterForUndoRedo++;
+		pManager->FlagForRedoUndo = 1;
+	}
 }
 
 

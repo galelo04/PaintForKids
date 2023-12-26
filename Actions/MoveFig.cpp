@@ -14,9 +14,16 @@ void MoveFig::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	pOut->PrintMessage("Move Figure : Click on the point");
 	pIn->GetPointClicked(P.x, P.y);
-	Moved_Fig = pManager->getSelectedFigure();
-	prevpoint = pManager->getSelectedFigure()->GetPointtoUndo();
 
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 }
 
 void MoveFig::Execute()
@@ -24,10 +31,19 @@ void MoveFig::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	ReadActionParameters();
-	pManager->getSelectedFigure()->move(P);
+	if (pManager->getSelectedFigure() != NULL)
+	{
+		pIn->GetPointClicked(P.x, P.y);
+		pManager->getSelectedFigure()->move(P);
+		Moved_Fig = pManager->getSelectedFigure();
+		prevpoint = pManager->getSelectedFigure()->GetPointtoUndo();
+	}
+	else
+		pOut->PrintMessage("Please, Select a Figure to Move");
 	pOut->ClearDrawArea();
 	pManager->UpdateInterface();
 	pManager->deselectall();
+
 }
 
 void MoveFig::Undo()

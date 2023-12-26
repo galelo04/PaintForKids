@@ -103,6 +103,10 @@ void CFigure::Load(ifstream& Infile)
 	else if (fillcolor == "YELLOW")
 		FigGfxInfo.FillClr = YELLOW;
 }
+color CFigure::getdrawcolor()
+{
+	return FigGfxInfo.DrawClr;
+}
 GfxInfo CFigure::getgfxinfo()
 {
 	return FigGfxInfo;

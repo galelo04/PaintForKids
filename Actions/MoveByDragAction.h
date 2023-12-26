@@ -9,10 +9,5 @@ public:
 	MoveByDragAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
-	virtual bool CanUndo() { return true; }
-	virtual void Undo();
-	virtual void Redo();
-	bool CanRecord();
-	void ExecuteRecord();
 };
 

@@ -81,5 +81,8 @@ enum FigType
 {
 	Rec, Squ, Cir, Tri, Hex
 };
+enum RecordControl {
+	on,off
+};
 
 #endif

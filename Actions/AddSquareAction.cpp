@@ -27,15 +27,14 @@ void AddSquareAction::ReadActionParameters()
 	SquareGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddSquareAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-
+	pManager->setFlagForRec(off);
 	//Create a square with the parameters read from the user
 	CSquare* S = new CSquare(P, SquareGfxInfo);
 
@@ -43,7 +42,15 @@ void AddSquareAction::Execute()
 	//Add the square to the list of figures
 	pManager->AddFigure(S);
 
-
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 }
 
 void AddSquareAction::Undo()

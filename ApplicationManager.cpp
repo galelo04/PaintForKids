@@ -51,8 +51,11 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < MaxRecordCount; i++)
 		RecordingList[i] = NULL;
 
-    FlagForSou=0;
-	FlagForRec = 0;
+	FlagForRedoUndo = 0;
+	counterForUndoRedo = 0;
+    FlagForSou=off;
+	FlagForRec = on;
+	forDeleteFigList = 0;
 	SelectedFig = NULL;
 	pRecord = NULL;
 	pRecord_2 = NULL;
@@ -130,8 +133,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SELECT_START_REC:
 		pAct = new Start_Recording(this);
-		if (FlagForRec == 1 || FlagForRec == 0)
-			this->set_recorder(((Start_Recording*)pAct));
 		break;
 	case SELECT_STOP_REC:
 		pAct = new Stop_Recording(this);
@@ -166,7 +167,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		else if ((ActionCount == MaxActionCount) && (pAct->CanUndo()))
 		{
-			delete ActionList[0];
+			if (get_recorder() == NULL)
+				delete ActionList[0];
 			for (int i = 0; i < MaxActionCount - 1; i++)
 				ActionList[i] = ActionList[i + 1];
 			ActionList[MaxActionCount - 1] = pAct;
@@ -178,6 +180,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		else if (this->get_recorder() != NULL && pAct->CanRecord() == true) {
 			if (RecordCount < MaxRecordCount)
 				RecordingList[RecordCount++] = pAct;
+			else if (forDeleteFigList == 0) {
+				forDeleteFigList = FigCount;
+				pRecord = NULL;
+			}
 		}
 		
 		//You may need to change this line depending to your implementation
@@ -211,6 +217,13 @@ Action* ApplicationManager::GetLastCanRedoActions()
 		return NULL;
 	}
 }
+Action* ApplicationManager::getActionList(int i) {
+	return ActionList[i];
+}
+void ApplicationManager::setActionList(Action* p, int i) {
+	ActionList[i] = p;
+}
+
 
 void ApplicationManager::set_recorder_for_play(Start_Recording* p) {
 	pRecord_2 = p;
@@ -247,19 +260,24 @@ void ApplicationManager::UpdateInterfaceForRecord() const
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 	}
 }
-void ApplicationManager::setFlagForRec(int p) {
+void ApplicationManager::setFlagForRec(RecordControl p) {
 	FlagForRec = p;
 }
-int ApplicationManager::getFlagForRec() {
+RecordControl ApplicationManager::getFlagForRec() {
 	return FlagForRec;
 }
-void ApplicationManager::setFlagForSou(int p) {
+void ApplicationManager::setFlagForSou(RecordControl p) {
 	FlagForSou = p;
 }
-int ApplicationManager::getFlagForSou() {
+RecordControl ApplicationManager::getFlagForSou() {
 	return FlagForSou;
 }
-
+void ApplicationManager::setForDeleteFigList(int p) {
+	forDeleteFigList = p;
+}
+int ApplicationManager::getForDeleteFigLis() {
+	return forDeleteFigList;
+}
 
 int ApplicationManager::CountRectangles()
 {
@@ -507,14 +525,6 @@ void ApplicationManager::deselectall()
 	}
 }
 
-//void ApplicationManager::AddActions(Action* pAct)
-//{
-//	if (ActionCount < MaxActionCount)
-//	{
-//		ActionList[ActionCount++] = pAct;
-//	}
-//}
-
 
 
 //==================================================================================//
@@ -522,7 +532,7 @@ void ApplicationManager::deselectall()
 //==================================================================================//
 
 //Draw all figures on the user interface
-void ApplicationManager::UpdateInterface() 
+void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 
@@ -531,10 +541,7 @@ void ApplicationManager::UpdateInterface()
 		if(FigList[i]!=NULL)
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 	}
-	//if(FigCount>=1&& FlagForSou==1)
-		//FigList[FigCount - 1]->MakeSound();
 
-	FlagForSou = 0;
 	
 	
 }

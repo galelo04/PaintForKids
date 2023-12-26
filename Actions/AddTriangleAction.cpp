@@ -37,22 +37,29 @@ void AddTriangleAction::ReadActionParameters()
 	TriangleGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddTriangleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-
+	pManager->setFlagForRec(off);
 	//Create a rectangle with the parameters read from the user
 	CTriangle* T = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(T);
 
-
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 
 }
 

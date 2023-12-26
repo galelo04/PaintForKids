@@ -15,5 +15,7 @@ public:
 
 	bool CanRecord();
 	void ExecuteRecord();
+
+	~Delete();
 };
 

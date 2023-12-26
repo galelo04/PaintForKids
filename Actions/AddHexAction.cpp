@@ -1,5 +1,5 @@
 #include "AddHexAction.h"
-#include "..\Figures\CHexagon.h"
+#include "CHexagon.h"
 
 #include "..\ApplicationManager.h"
 
@@ -27,19 +27,28 @@ void AddHexAction::ReadActionParameters()
 	HexGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 void AddHexAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-
+	pManager->setFlagForRec(off);
 	//Create a hexagon with the parameters read from the user
 	CHexagon* H = new CHexagon(P, HexGfxInfo);
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(H);
+
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 
 }
 

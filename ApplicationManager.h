@@ -23,12 +23,12 @@ private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 	CFigure* SelectedFig;//Pointer to the selected figure
-	int ActionCount;
 	Action* ActionList[MaxActionCount];
 
-	int FlagForSou;
-	int FlagForRec;
+	RecordControl FlagForSou;
+	RecordControl FlagForRec;
 	int RecordCount;
+	int forDeleteFigList;
 	Action* RecordingList[MaxRecordCount];
 
 	Start_Recording* pRecord;
@@ -63,11 +63,13 @@ public:
 	CFigure* GetLastFigure() const;
 	Action* GetLastCanUndoActions();
 	Action* GetLastCanRedoActions();
+	Action* getActionList(int);
+	void setActionList(Action*, int);
 
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
-	void UpdateInterface() ;	//Redraws all the drawing window
+	void UpdateInterface()const ;	//Redraws all the drawing window
 
 	int CountRectangles();
 	int CountSquares();
@@ -84,6 +86,9 @@ public:
 	void dElEtE(CFigure* Fig);
 	void set_recorder_for_play(Start_Recording* p);
 	Start_Recording* get_recorder_for_play();
+	int FlagForRedoUndo;
+	int counterForUndoRedo;
+	int ActionCount;
 
 	void set_recorder(Start_Recording* p);
 	Start_Recording* get_recorder();
@@ -96,10 +101,12 @@ public:
 	Action* getActionRecordList(int);
 	void deleteFigureForRecord(int);
 	void UpdateInterfaceForRecord() const;
-	void setFlagForRec(int);
-	int getFlagForRec();
-	void setFlagForSou(int);
-	int getFlagForSou();
+	void setFlagForRec(RecordControl);
+	RecordControl getFlagForRec();
+	void setFlagForSou(RecordControl);
+	RecordControl getFlagForSou();
+	void setForDeleteFigList(int);
+	int getForDeleteFigLis();
 };
 
 #endif

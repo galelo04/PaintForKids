@@ -35,8 +35,7 @@ void AddRectAction::ReadActionParameters()
 	RectGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 //Execute the action
@@ -44,13 +43,23 @@ void AddRectAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-	
+	pManager->setFlagForRec(off);
 	//Create a rectangle with the parameters read from the user
 	CRectangle *R=new CRectangle(P1, P2, RectGfxInfo);
 
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 
 
 

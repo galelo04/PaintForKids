@@ -1,5 +1,5 @@
 #include "AddCircleAction.h"
-#include "..\Figures\CCircle.h"
+#include "CCircle.h"
 
 #include "..\ApplicationManager.h"
 
@@ -33,23 +33,30 @@ void AddCircleAction::ReadActionParameters()
 	CircleGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddCircleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
+	pManager->setFlagForRec(off);
 
 	//Create a circle with the parameters read from the user
 	CCircle* C = new CCircle(P1, P2, CircleGfxInfo);
 
 	//Add the circle to the list of figures
 	pManager->AddFigure(C);
-	
 
-
+	if (pManager->FlagForRedoUndo == 1)
+	{
+		for (int i = pManager->ActionCount + 1;i <= pManager->ActionCount + pManager->counterForUndoRedo;i++)
+		{
+			pManager->setActionList(NULL, i);
+		}
+		pManager->counterForUndoRedo = 0;
+		pManager->FlagForRedoUndo = 0;
+	}
 }
 
 void AddCircleAction::Undo()

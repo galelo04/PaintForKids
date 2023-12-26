@@ -35,17 +35,6 @@ CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo ):CFigure(FigureGfxInfo
 	//and changes the radius to if the diameter is bigger than the window's height 
 }
 
-/*void CCircle::operator=(CFigure* Other)
-{
-	CCircle* Cir = (CCircle*)Other;
-	ID = Cir->get_ID();
-	Selected = Cir->IsSelected();
-	FigGfxInfo = Cir->getgfxinfo();
-	Type = Cir->gettype();
-	Center = Cir->Center;
-	RadiusPoint = Cir->RadiusPoint;
-	radius = Cir->radius;
-}*/
 
 void CCircle::Draw(Output* pOut) const
 {
@@ -110,6 +99,13 @@ Point CCircle::GetPointtoUndo()
 {
 	return Center;
 }
-//void CCircle::MakeSound() {
-	//PlaySound(TEXT("sounds\\circle"), NULL, SND_ASYNC);
-//}
+void CCircle::MakeSound() {
+	PlaySound(TEXT("sounds\\circle"), NULL, SND_ASYNC);
+}
+CFigure* CCircle::getFigCopy()
+{
+	CFigure* p = new CCircle(Center, RadiusPoint, FigGfxInfo);
+	p->set_ID(ID);
+	p->SetSelected(Selected);
+	return p;
+}
