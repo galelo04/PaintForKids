@@ -26,7 +26,7 @@ void Play_Recording::Execute() {
 	ReadActionParameters();
 	if (pManager->get_recorder_for_play() != NULL){
 		int k = pManager->getFigcount();
-		for (int i = 0; i < pManager->getRecordCount(); i++) {
+		for (int i = 0; i < pManager->getForDeleteFigLis(); i++) {
 			pManager->deleteFigureForRecord(i);
 		}
 		pManager->setFigCount(0);

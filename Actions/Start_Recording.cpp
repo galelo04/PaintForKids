@@ -13,7 +13,8 @@ void Start_Recording::ReadActionParameters() {
 	Input* pIn = pManager->GetInput();
 
 	//for condition about recording at the beginning of the program  and after clearall
-	if (pManager->getFlagForRec() == 1 || pManager->getFlagForRec() == 0) {
+	if (pManager->getFlagForRec()==on) {
+		pManager->set_recorder(this);
 		pOut->PrintMessage("S T A R T__R E C O R D I N G");
 		Sleep(1000);
 		pOut->ClearStatusBar();
@@ -26,7 +27,7 @@ void Start_Recording::ReadActionParameters() {
 void Start_Recording::Execute() {
 
 		ReadActionParameters();
-	
+		pManager->setFlagForRec(off);
  }
 
 

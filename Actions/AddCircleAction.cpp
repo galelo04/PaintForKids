@@ -33,14 +33,14 @@ void AddCircleAction::ReadActionParameters()
 	CircleGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 
 	pOut->ClearStatusBar();
-	pManager->setFlagForRec(-1);
-	pManager->setFlagForSou(1);
+
 }
 
 void AddCircleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
+	pManager->setFlagForRec(off);
 
 	//Create a circle with the parameters read from the user
 	CCircle* C = new CCircle(P1, P2, CircleGfxInfo);

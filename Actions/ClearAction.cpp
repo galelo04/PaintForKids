@@ -12,13 +12,14 @@ void ClearAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("Cleared All");
-	pManager->setFlagForRec(1);
+
 	
 }
 
 void ClearAction::Execute()
 {
 	ReadActionParameters();
+	pManager->setFlagForRec(on);
 	pManager->clearall();
 	UI.isfilled = false;
 	UI.DrawColor = BLUE;
