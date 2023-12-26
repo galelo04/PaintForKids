@@ -323,13 +323,14 @@ void Output::DrawHex(Point P1, GfxInfo HexGfxInfo, bool selected) const
 
 void Output::DrawCircle(Point P1,int radius, GfxInfo CircGfxInfo, bool selected) const
 {
-
+	
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
 	else
+	{
 		DrawingClr = CircGfxInfo.DrawClr;
-
+	}
 	pWind->SetPen(DrawingClr, CircGfxInfo.BorderWdth);
 	drawstyle style;
 	if (CircGfxInfo.isFilled)

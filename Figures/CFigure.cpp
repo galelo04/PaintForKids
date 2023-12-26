@@ -29,12 +29,15 @@ bool CFigure::IsSelected() const
 {	return Selected; }
 
 void CFigure::ChngDrawClr(color Dclr)
-{	FigGfxInfo.DrawClr = Dclr; }
+{
+	FigGfxInfo.DrawClr = Dclr;
+
+}
 
 void CFigure::ChngFillClr(color Fclr)
 {	
 	setisFilled(true);
-	FigGfxInfo.FillClr = Fclr; 
+	FigGfxInfo.FillClr = Fclr;
 }
 
 void CFigure::Save(ofstream& OutFile)
