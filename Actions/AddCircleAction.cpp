@@ -100,3 +100,9 @@ void AddCircleAction::operator=(Action* f) {
 	CircleGfxInfo.FillClr = pl->CircleGfxInfo.FillClr;
 	CircleGfxInfo.isFilled = pl->CircleGfxInfo.isFilled;
 }
+
+void AddCircleAction::playsound()
+{
+	string voice = "sounds\\circle";
+	PlaySound(voice.c_str(), NULL, SND_FILENAME | SND_ASYNC);
+}

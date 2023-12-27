@@ -29,6 +29,7 @@ public:
 	void ExecuteRecord();
 
 	virtual void operator=(Action*);
+	virtual void playsound();
 	
 };
 

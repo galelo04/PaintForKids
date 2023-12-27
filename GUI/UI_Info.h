@@ -44,6 +44,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_SAVE,
 	ITM_LOAD,
 	ITM_SWITCH_TO_PLAY,
+	ITM_VOLUME_ON,
+	ITM_MUTE,
 	ITM_EXIT_DRAW,		//Exit item
 
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
@@ -61,7 +63,6 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	ITM_FIG_TYPE,
 	ITM_FIG_COLOR,
 	ITM_FIG_TYPE_COLOR,
-	ITM_TRY_AGAIN,
 	ITM_SWITCH_TO_DRAW,
 	ITM_EXIT_PLAY,
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum

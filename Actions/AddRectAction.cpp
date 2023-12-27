@@ -104,3 +104,9 @@ void AddRectAction::operator=(Action* f) {
 	RectGfxInfo.isFilled = pl->RectGfxInfo.isFilled;
 }
 
+void AddRectAction::playsound()
+{
+	string voice = "sounds\\rectangle";
+	PlaySound(voice.c_str(), NULL, SND_FILENAME | SND_ASYNC);
+}
+

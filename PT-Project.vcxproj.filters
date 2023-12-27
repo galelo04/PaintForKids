@@ -226,6 +226,8 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="ReszieByDragAction.cpp" />
+    <ClCompile Include="VolumeAction.cpp" />
+    <ClCompile Include="MuteAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -391,6 +393,8 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="ReszieByDragAction.h" />
+    <ClInclude Include="VolumeAction.h" />
+    <ClInclude Include="MuteAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\oomao\Downloads\Phase2 - Code F23\Phase2 - Code F22\ClassDiagram.cd" />

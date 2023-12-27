@@ -91,3 +91,9 @@ void AddSquareAction::operator=(Action* f) {
 	SquareGfxInfo.isFilled = pl-> SquareGfxInfo.isFilled;
 }
 
+void AddSquareAction::playsound()
+{
+	string voice = "sounds\\square";
+	PlaySound(voice.c_str(), NULL, SND_FILENAME | SND_ASYNC);
+}
+

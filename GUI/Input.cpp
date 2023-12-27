@@ -89,7 +89,10 @@ ActionType Input::GetUserAction() const
 			case ITM_PLY_REC: return SELECT_PLAY_REC;
 			case ITM_SAVE: return SELECT_SAVE;
 			case ITM_LOAD: return SELECT_LOAD;
+			case ITM_VOLUME_ON: return SELECT_VOLUME_ON;
+			case ITM_MUTE: return SELECT_MUTE;
 			case ITM_SWITCH_TO_PLAY: return TO_PLAY;
+			
 			case ITM_EXIT_DRAW: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -114,7 +117,6 @@ ActionType Input::GetUserAction() const
 			case ITM_FIG_TYPE: return SELECT_FIG_TYPE;
 			case ITM_FIG_COLOR: return SELECT_FIG_COLOR;
 			case ITM_FIG_TYPE_COLOR: return SELECT_FIG_TYPE_COLOR;
-			case ITM_TRY_AGAIN: return SELECT_TRY_AGAIN;
 			case ITM_SWITCH_TO_DRAW: return TO_DRAW;
 			case ITM_EXIT_PLAY: return EXIT;
 			default: return EMPTY;

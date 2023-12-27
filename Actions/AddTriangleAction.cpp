@@ -105,3 +105,9 @@ void AddTriangleAction::operator=(Action* f) {
 	TriangleGfxInfo.isFilled = pl->TriangleGfxInfo.isFilled;
 }
 
+void AddTriangleAction::playsound()
+{
+	string voice = "sounds\\triangle";
+	PlaySound(voice.c_str(), NULL, SND_FILENAME | SND_ASYNC);
+}
+

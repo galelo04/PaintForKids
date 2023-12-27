@@ -8,8 +8,8 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 
-	UI.width = 1366;
-	UI.height = 768;
+	UI.width = 1600;
+	UI.height = 800;
 	UI.wx = 5;
 	UI.wy = 5;
 
@@ -116,6 +116,8 @@ void Output::CreateDrawToolBar() const
 	DrawMenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Save.jpg";
 	DrawMenuItemImages[ITM_LOAD] = "images\\MenuItems\\Menu_Load.jpg";
 	DrawMenuItemImages[ITM_SWITCH_TO_PLAY] = "images\\MenuItems\\Menu_PlayMode.jpg";
+	DrawMenuItemImages[ITM_VOLUME_ON] = "images\\MenuItems\\volume.jpg";
+	DrawMenuItemImages[ITM_MUTE]= "images\\MenuItems\\mute.jpg";
 	DrawMenuItemImages[ITM_EXIT_DRAW] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -143,7 +145,6 @@ void Output::CreatePlayToolBar() const
 	PlayMenuItemImages[ITM_FIG_TYPE] = "images\\MenuItems\\Menu_FigType.jpg";
 	PlayMenuItemImages[ITM_FIG_COLOR] = "images\\MenuItems\\Menu_FigClr.jpg";
 	PlayMenuItemImages[ITM_FIG_TYPE_COLOR] = "images\\MenuItems\\Menu_FigTypeClr.jpg";
-	PlayMenuItemImages[ITM_TRY_AGAIN] = "images\\MenuItems\\Menu_TryAgain.jpg";
 	PlayMenuItemImages[ITM_SWITCH_TO_DRAW] = "images\\MenuItems\\Menu_DrawMode.jpg";
 	PlayMenuItemImages[ITM_EXIT_PLAY] = "images\\MenuItems\\Menu_Exit.jpg";
 

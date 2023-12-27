@@ -88,3 +88,9 @@ void AddHexAction::ExecuteRecord() {
 	 HexGfxInfo.FillClr = pl->HexGfxInfo.FillClr;
 	 HexGfxInfo.isFilled = pl->HexGfxInfo.isFilled;
 }
+
+ void AddHexAction::playsound()
+ {
+	 string voice = "sounds\\hexagon";
+	 PlaySound(voice.c_str(), NULL, SND_FILENAME | SND_ASYNC);
+ }

@@ -37,6 +37,8 @@ enum ActionType //The actions supported (you can add more if needed)
 	SELECT_PLAY_REC,
 	SELECT_SAVE,
 	SELECT_LOAD,
+	SELECT_VOLUME_ON,
+	SELECT_MUTE,
 	EXIT,			//Exit
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY,		//Switch interface to Play mode
@@ -46,7 +48,6 @@ enum ActionType //The actions supported (you can add more if needed)
 	SELECT_FIG_TYPE,
 	SELECT_FIG_COLOR,
 	SELECT_FIG_TYPE_COLOR,
-	SELECT_TRY_AGAIN
 
 	///TODO: Add the other action types of the two modes
 };

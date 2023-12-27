@@ -29,6 +29,8 @@
 #include"SwitchDraw.h"
 #include "MoveByDragAction.h"
 #include "ReszieByDragAction.h"
+#include "VolumeAction.h"
+#include "MuteAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -53,7 +55,7 @@ ApplicationManager::ApplicationManager()
 
 	FlagForRedoUndo = 0;
 	counterForUndoRedo = 0;
-    FlagForSou=off;
+    FlagForSou=on;
 	FlagForRec = on;
 	forDeleteFigList = 0;
 	SelectedFig = NULL;
@@ -152,6 +154,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case SELECT_RESIZE:
 			pAct = new ResizeByDragAction(this);
 			break;
+		case SELECT_VOLUME_ON:
+			pAct = new VolumeAction(this);
+			break;
+		case SELECT_MUTE:
+			pAct = new MuteAction(this);
+			break;
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 		case EXIT:
@@ -161,6 +169,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
+		if (FlagForSou == on)
+			pAct->playsound();
 
 		if ((ActionCount < MaxActionCount) && (pAct->CanUndo()))
 			ActionList[ActionCount++] = pAct;

@@ -26,6 +26,7 @@ public:
 	bool CanRecord();
 	void ExecuteRecord();
 	virtual void operator=(Action*);
+	virtual void playsound();
 
 };
 #endif
