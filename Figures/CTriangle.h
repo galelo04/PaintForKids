@@ -20,7 +20,6 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 	virtual FigType gettype();
-	virtual color getfillcolor();
 	Point getvertix1();
 	Point getvertix2();
 	Point getvertix3();

@@ -20,7 +20,6 @@ public:
 
 	virtual void PrintInfo(Output* pOut);
 	virtual FigType gettype();
-	virtual color getfillcolor();
 	int getwidth();
 	int getheight();
 	virtual void move(Point P);

@@ -43,7 +43,7 @@ public:
 
 	virtual void PrintInfo(Output* pOut) = 0 ;	//print all figure info on the status bar
 	virtual FigType gettype() = 0;
-	virtual color getfillcolor() = 0;
+	virtual color getfillcolor();
 	virtual color getdrawcolor();
 	GfxInfo getgfxinfo(); 
 	void setisFilled(bool flag);

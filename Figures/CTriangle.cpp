@@ -76,10 +76,6 @@ FigType CTriangle::gettype()
 
 	return Type;
 }
-color CTriangle::getfillcolor()
-{
-	return FigGfxInfo.FillClr;
-}
 Point CTriangle::getvertix1()
 {
 	return Vertix1;

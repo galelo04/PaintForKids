@@ -71,11 +71,7 @@ FigType CCircle::gettype()
 	Type = Cir;
 	return Type;
 }
-color CCircle::getfillcolor()
-{
-	return FigGfxInfo.FillClr;
 
-	}
 int CCircle:: getradius()
 {
 	return radius;

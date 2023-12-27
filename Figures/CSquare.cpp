@@ -65,10 +65,6 @@ FigType CSquare::gettype()
 	Type = Squ;
 	return Type;
 }
-color CSquare::getfillcolor()
-{
-	return FigGfxInfo.FillClr;
-}
 void CSquare::move(Point P1)
 {
 	Center.x = P1.x;

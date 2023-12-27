@@ -60,10 +60,6 @@ FigType CRectangle::gettype()
 
 	return Type;
 }
-color CRectangle::getfillcolor()
-{
-	return FigGfxInfo.FillClr;
-}
 int CRectangle::getwidth()
 {
 	int width;

@@ -96,10 +96,6 @@ FigType CHexagon::gettype()
 
 	return Type;
 }
-color CHexagon::getfillcolor()
-{
-	return FigGfxInfo.FillClr;
-}
 void CHexagon::move(Point P1)
 {
 	Center.x = P1.x;

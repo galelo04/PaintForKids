@@ -18,7 +18,6 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& Infile);
 	virtual FigType gettype();
-	virtual color getfillcolor();
 	virtual void PrintInfo(Output* pOut);
 	virtual void move(Point P);
 	virtual void resize(Point P);

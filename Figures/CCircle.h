@@ -21,7 +21,6 @@ public:
 
 	 void PrintInfo(Output* pOut) ;
 	 FigType gettype();
-	 color getfillcolor();
 	int getradius();
 	virtual void move(Point P);
 	virtual void resize(Point P);
