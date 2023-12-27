@@ -54,8 +54,6 @@ public:
 	
 	virtual Point GetPointtoUndo() = 0;		 //Get the central point to return the Figure into its place after Undo
 	virtual void MakeSound() = 0;
-	virtual CFigure* getFigCopy() = 0;
-
 };
 
 #endif

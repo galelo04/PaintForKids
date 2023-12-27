@@ -30,7 +30,6 @@ public:
 	void DeleteFigure(CFigure*);
 	virtual Point GetPointtoUndo();
 	void MakeSound();
-	CFigure* getFigCopy();
 };
 
 #endif

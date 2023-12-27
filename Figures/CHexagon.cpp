@@ -127,12 +127,3 @@ Point CHexagon::GetPointtoUndo()
 void CHexagon::MakeSound() {
 	PlaySound(TEXT("sounds\\hexagon"), NULL, SND_ASYNC);
 }
-
-
-CFigure* CHexagon::getFigCopy()
-{
-	CFigure* p = new CHexagon(Center, FigGfxInfo);
-	p->set_ID(ID);
-	p->SetSelected(Selected);
-	return p;
-}

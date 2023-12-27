@@ -49,6 +49,10 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < MaxActionCount; i++)
 		ActionList[i] = NULL;
 
+	DeletedListCount = 0;
+	for (int i = 0; i < MaxDeleteCount; i++)
+		DeletedList[i] = NULL;
+
 	RecordCount = 0;
 	for (int i = 0; i < MaxRecordCount; i++)
 		RecordingList[i] = NULL;
@@ -206,21 +210,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 Action* ApplicationManager::GetLastCanUndoActions()
 {
-	--ActionCount;
-	if(ActionCount>=0)
+	if (--ActionCount >= 0) {
+		if (ActionList[ActionCount] == NULL) return NULL;
 		return ActionList[ActionCount];
-	else
-	{
-		ActionCount = 0;
-		return NULL;
 	}
+		else
+		{
+			ActionCount = 0;
+			return NULL;
+		}
 }
 
 Action* ApplicationManager::GetLastCanRedoActions()
 {
-	
-	if(ActionCount<=5)
+	if (ActionCount <= 5) {
+		if (ActionList[ActionCount] == NULL)  return NULL;
 		return ActionList[ActionCount++];
+	}
 	else
 	{
 		ActionCount = 5;
@@ -232,6 +238,26 @@ Action* ApplicationManager::getActionList(int i) {
 }
 void ApplicationManager::setActionList(Action* p, int i) {
 	ActionList[i] = p;
+}
+
+void ApplicationManager::deleteforundo(CFigure* Fig)
+{
+	int k = getIndexFigList(Fig);
+	if(DeletedListCount<MaxDeleteCount)
+	DeletedList[DeletedListCount++] = Fig;
+	else 
+	{
+		delete DeletedList[0];
+		for (int i = 0; i < MaxDeleteCount - 1; i++)
+			DeletedList[i] = DeletedList[i + 1];
+		DeletedList[MaxDeleteCount - 1] = Fig;
+
+	}
+	FigList[k] = NULL;
+	for (int i = k; i < FigCount - 1; i++)
+		swap(FigList[i], FigList[i + 1]);
+	FigCount -= 1;
+	pOut->ClearDrawArea();
 }
 
 
@@ -572,6 +598,11 @@ ApplicationManager::~ApplicationManager()
 	{
 		if (ActionList[i]!=NULL)
 			delete ActionList[i];
+	}
+	for (int i = 0; i < MaxDeleteCount; i++)
+	{
+		if (DeletedList[i] != NULL)
+			delete DeletedList[i];
 	}
 	delete pIn;
 	delete pOut;

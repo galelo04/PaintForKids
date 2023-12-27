@@ -47,7 +47,7 @@ void AddRectAction::Execute()
 	//Create a rectangle with the parameters read from the user
 	CRectangle *R=new CRectangle(P1, P2, RectGfxInfo);
 
-
+	prevfig = R;
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 
@@ -67,7 +67,7 @@ void AddRectAction::Execute()
 
 void AddRectAction::Undo()
 {
-	pManager->dElEtE(pManager->GetLastFigure());
+	pManager->deleteforundo(prevfig);
 	MadeUndo = true;	//The Undo done
 }
 
@@ -75,10 +75,8 @@ void AddRectAction::Redo()
 {
 	if (MadeUndo)
 	{
-		CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
-
 		//Add the rectangle to the list of figures
-		pManager->AddFigure(R);
+		pManager->AddFigure(prevfig);
 	}
 	else
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");

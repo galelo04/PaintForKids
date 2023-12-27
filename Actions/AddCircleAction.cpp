@@ -45,6 +45,7 @@ void AddCircleAction::Execute()
 	//Create a circle with the parameters read from the user
 	CCircle* C = new CCircle(P1, P2, CircleGfxInfo);
 
+	prevfig = C;
 	//Add the circle to the list of figures
 	pManager->AddFigure(C);
 
@@ -61,7 +62,7 @@ void AddCircleAction::Execute()
 
 void AddCircleAction::Undo()
 {
-	pManager->dElEtE(pManager->GetLastFigure());
+	pManager->deleteforundo(prevfig);
 	MadeUndo = true;	//The Undo done
 }
 
@@ -69,10 +70,8 @@ void AddCircleAction::Redo()
 {
 	if (MadeUndo)
 	{
-		CCircle* C = new CCircle(P1, P2, CircleGfxInfo);
-
 		//Add the circle to the list of figures
-		pManager->AddFigure(C);
+		pManager->AddFigure(prevfig);
 	}
 	else 
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");

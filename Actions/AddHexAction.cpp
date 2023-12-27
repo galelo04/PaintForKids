@@ -37,6 +37,7 @@ void AddHexAction::Execute()
 	//Create a hexagon with the parameters read from the user
 	CHexagon* H = new CHexagon(P, HexGfxInfo);
 
+	prevfig = H;
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(H);
 
@@ -54,7 +55,7 @@ void AddHexAction::Execute()
 
 void AddHexAction::Undo()
 {
-	pManager->dElEtE(pManager->GetLastFigure());
+	pManager->deleteforundo(prevfig);
 	MadeUndo = true;	//the Undo done
 }
 

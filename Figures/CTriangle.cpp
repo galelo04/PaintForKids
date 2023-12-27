@@ -144,11 +144,3 @@ Point CTriangle::GetPointtoUndo()
 void CTriangle::MakeSound() {
 	PlaySound(TEXT("sounds\\triangle"), NULL, SND_ASYNC);
 }
-
-CFigure* CTriangle::getFigCopy()
-{
-	CFigure* p = new CTriangle(Vertix1, Vertix2, Vertix3, FigGfxInfo);
-	p->set_ID(ID);
-	p->SetSelected(Selected);
-	return p;
-}

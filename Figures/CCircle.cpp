@@ -102,10 +102,3 @@ Point CCircle::GetPointtoUndo()
 void CCircle::MakeSound() {
 	PlaySound(TEXT("sounds\\circle"), NULL, SND_ASYNC);
 }
-CFigure* CCircle::getFigCopy()
-{
-	CFigure* p = new CCircle(Center, RadiusPoint, FigGfxInfo);
-	p->set_ID(ID);
-	p->SetSelected(Selected);
-	return p;
-}

@@ -135,11 +135,3 @@ Point CRectangle::GetPointtoUndo()
 void CRectangle::MakeSound() {
 	PlaySound(TEXT("sounds\\rectangle"), NULL, SND_ASYNC);
 }
-
-CFigure* CRectangle::getFigCopy()
-{
-	CFigure* p = new CRectangle(Corner1, Corner2, FigGfxInfo);
-	p->set_ID(ID);
-	p->SetSelected(Selected);
-	return p;
-}

@@ -2,11 +2,13 @@
 #define ADD_HEX_ACTION_H
 
 #include "Action.h"
+#include "CFigure.h"
 class AddHexAction :public Action
 {
 private:
 	Point P;
     GfxInfo HexGfxInfo;
+	CFigure* prevfig;
 	bool MadeUndo = false;							//bool that knows me if the circle Undo before Redo or not
 public:
 	AddHexAction(ApplicationManager* pApp);

@@ -2,12 +2,13 @@
 #define ADD_SQUARE_ACTION_H
 
 #include "Action.h"
-
+#include "CFigure.h"
 class AddSquareAction : public Action
 {
 private:
 	Point P;
 	GfxInfo SquareGfxInfo;
+	CFigure* prevfig;
 	bool MadeUndo = false;								//bool that knows me if the circle Undo before Redo or not
 public:
 	AddSquareAction(ApplicationManager* pApp);

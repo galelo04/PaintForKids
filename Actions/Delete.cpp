@@ -20,7 +20,7 @@ void Delete::Execute()
 	if (pManager->getSelectedFigure() != NULL) 
 	{
 		DeletedFig = pManager->getSelectedFigure();
-		pManager->dElEtE(pManager->getSelectedFigure());
+		pManager->deleteforundo(DeletedFig);
 	}
 
 	if (pManager->FlagForRedoUndo == 1)
@@ -44,9 +44,7 @@ void Delete::Redo()
 {
 	if (MadeUndo)
 	{
-		CFigure* p = DeletedFig->getFigCopy();
-		pManager->dElEtE(DeletedFig);
-		DeletedFig = p;
+		pManager->deleteforundo(DeletedFig);
 	}
 	else
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");

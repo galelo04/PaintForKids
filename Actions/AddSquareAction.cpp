@@ -38,7 +38,7 @@ void AddSquareAction::Execute()
 	//Create a square with the parameters read from the user
 	CSquare* S = new CSquare(P, SquareGfxInfo);
 
-
+	prevfig = S;
 	//Add the square to the list of figures
 	pManager->AddFigure(S);
 
@@ -55,7 +55,7 @@ void AddSquareAction::Execute()
 
 void AddSquareAction::Undo()
 {
-	pManager->dElEtE(pManager->GetLastFigure());
+	pManager->deleteforundo(prevfig);
 	MadeUndo = true;	//The Undo done
 }
 
@@ -63,10 +63,8 @@ void AddSquareAction::Redo()
 {
 	if (MadeUndo)
 	{
-		CSquare* S = new CSquare(P, SquareGfxInfo);
-
 		//Add the square to the list of figures
-		pManager->AddFigure(S);
+		pManager->AddFigure(prevfig);
 	}
 	else
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");

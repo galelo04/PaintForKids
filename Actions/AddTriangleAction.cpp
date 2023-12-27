@@ -48,6 +48,7 @@ void AddTriangleAction::Execute()
 	//Create a rectangle with the parameters read from the user
 	CTriangle* T = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 
+	prevfig = T;
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(T);
 
@@ -65,7 +66,7 @@ void AddTriangleAction::Execute()
 
 void AddTriangleAction::Undo()
 {
-	pManager->dElEtE(pManager->GetLastFigure());
+	pManager->deleteforundo(prevfig);
 	MadeUndo = true;	//The Undo done
 }
 
@@ -73,10 +74,9 @@ void AddTriangleAction::Redo()
 {
 	if (MadeUndo)
 	{
-		CTriangle* T = new CTriangle(P1, P2, P3, TriangleGfxInfo);
 
 		//Add the rectangle to the list of figures
-		pManager->AddFigure(T);
+		pManager->AddFigure(prevfig);
 	}
 	else
 		pManager->GetOutput()->PrintMessage("There is no action to Redo, You must make Undo first");

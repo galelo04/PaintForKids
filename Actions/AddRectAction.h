@@ -2,13 +2,14 @@
 #define ADD_RECT_ACTION_H
 
 #include "Action.h"
-
+#include "CFigure.h"
 //Add Rectangle Action class
 class AddRectAction: public Action
 {
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo RectGfxInfo;
+	CFigure* prevfig;
 	bool MadeUndo = false;								//bool that knows me if the circle Undo before Redo or not
 public:
 	AddRectAction(ApplicationManager* pApp);

@@ -105,11 +105,3 @@ Point CSquare::GetPointtoUndo()
 void CSquare::MakeSound() {
 	PlaySound(TEXT("sounds\\square"), NULL, SND_ASYNC);
 }
-
-CFigure* CSquare::getFigCopy()
-{
-	CFigure* p = new CSquare(Center, FigGfxInfo);
-	p->set_ID(ID);
-	p->SetSelected(Selected);
-	return p;
-}

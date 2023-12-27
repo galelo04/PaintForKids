@@ -2,6 +2,7 @@
 #define ADD_TRIANGLE_ACTION_H
 
 #include "Action.h"
+#include "CFigure.h"
 class AddTriangleAction : public Action
 {
 private:
@@ -9,6 +10,7 @@ private:
 	Point P2;
 	Point P3;
     GfxInfo TriangleGfxInfo;
+	CFigure* prevfig;
 	bool MadeUndo = false;									//bool that knows me if the circle Undo before Redo or not
 public:
 	AddTriangleAction(ApplicationManager* pApp);

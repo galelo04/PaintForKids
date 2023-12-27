@@ -2,6 +2,7 @@
 #define ADD_CIRCLE_ACTION_H
 
 #include "Action.h"
+#include "CFigure.h"
 
 class AddCircleAction :public Action
 {
@@ -9,6 +10,7 @@ private:
 	Point P1;	//the center
 	Point P2;	//the radius point
     GfxInfo CircleGfxInfo;
+	CFigure* prevfig;
 	bool MadeUndo = false;	//bool that knows me if the circle Undo before Redo or not
 public:
 	AddCircleAction(ApplicationManager* pApp);
