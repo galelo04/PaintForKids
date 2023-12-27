@@ -243,6 +243,8 @@ void ApplicationManager::setActionList(Action* p, int i) {
 void ApplicationManager::deleteforundo(CFigure* Fig)
 {
 	int k = getIndexFigList(Fig);
+	if (k == -1)
+		return;
 	if(DeletedListCount<MaxDeleteCount)
 	DeletedList[DeletedListCount++] = Fig;
 	else 
@@ -515,6 +517,11 @@ void ApplicationManager::clearall()
 		delete RecordingList[i];
 		RecordingList[i] = NULL;
 	}
+	for (int i = 0; i < ActionCount; i++)
+	{
+		delete ActionList[i];
+		ActionList[i] = NULL;
+	}
 	//don"t forget delete the array of action
 	//for stop recording
 	set_recorder(NULL);
@@ -526,13 +533,17 @@ void ApplicationManager::clearall()
 
 int ApplicationManager::getIndexFigList(CFigure*p) {
 	for (int i = 0; i < FigCount; i++)
+	{
 		if (p == FigList[i])
 			return i;
+	}
+	return -1;
 }
 void ApplicationManager::dElEtE(CFigure * Fig) {
 	
 		int k = getIndexFigList(Fig);
-
+		if (k == -1)
+			return;
 		Fig->DeleteFigure(Fig);
 		setSelectedFigure(NULL);
 		FigList[k] = NULL;
