@@ -44,13 +44,13 @@ bool CSquare::isPointInside(int x, int y) const
 
 void CSquare::Save(ofstream& OutFile)
 {
-	OutFile << "\nSQR" << '\t' << ID << '\t' << Center.x << '\t' << Center.y << '\t';
+	OutFile << "\nSQR" << '\t' << ID << '\t' << Center.x << '\t' << Center.y << '\t'<<squareLength<<'\t';
 	CFigure::Save(OutFile);
 }
 
 void CSquare::Load(ifstream& Infile)
 {
-	Infile >> ID >> Center.x >> Center.y;
+	Infile >> ID >> Center.x >> Center.y>>squareLength;
 	CFigure::Load(Infile);
 }
 

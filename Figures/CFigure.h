@@ -47,21 +47,15 @@ public:
 	virtual color getdrawcolor();
 	GfxInfo getgfxinfo(); 
 	void setisFilled(bool flag);
-<<<<<<< HEAD
+
     virtual void move(Point P) = 0;
 	virtual void resize(Point P) = 0;
 	virtual void DeleteFigure(CFigure*)=0;
 	
 	virtual Point GetPointtoUndo() = 0;		 //Get the central point to return the Figure into its place after Undo
-	
-	//virtual void MakeSound() = 0;
-=======
-	virtual void move(Point P) = 0;
-	virtual void DeleteFigure(CFigure*) = 0;
-	virtual Point GetPointtoUndo() = 0;
 	virtual void MakeSound() = 0;
 	virtual CFigure* getFigCopy() = 0;
->>>>>>> 98527c84ad3931c4ba7bf0f41c4e21addd984e89
+
 };
 
 #endif

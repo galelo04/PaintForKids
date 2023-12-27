@@ -74,13 +74,13 @@ bool CHexagon::isPointInside(int x, int y) const
 
 void CHexagon::Save(ofstream& OutFile)
 {
-	OutFile << "\nHEX" << '\t' << ID << '\t' << Center.x << '\t' << Center.y << '\t';
+	OutFile << "\nHEX" << '\t' << ID << '\t' << Center.x << '\t' << Center.y << '\t'<<hexagonLength<<'\t';
 	CFigure::Save(OutFile);
 }
 
 void CHexagon::Load(ifstream& Infile)
 {
-	Infile >> ID >> Center.x >> Center.y;
+	Infile >> ID >> Center.x >> Center.y>>hexagonLength;
 	CFigure::Load(Infile);
 }
 

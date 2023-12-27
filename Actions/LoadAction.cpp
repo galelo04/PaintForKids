@@ -84,5 +84,5 @@ void LoadAction::Execute()
 	else if (currentfillcolor == "YELLOW")
 		UI.FillColor = YELLOW;
 	pManager->deselectall();
-	
+	InFile.close();
 }
